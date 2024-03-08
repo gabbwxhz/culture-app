@@ -22,21 +22,21 @@ class HomePage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
+            begin: Alignment.topRight,
             colors: [Color(0xFF3E0976), Color(0xFF934FBD)],
           ),
         ),
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 150.0),
-              child: CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.white,
-              ),
-            ),
+                padding: EdgeInsets.only(top: 150.0),
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: 400, // Define a largura da imagem
+                  height: 250, // Define a altura da imagem
+                )),
             SizedBox(
-              height: 150,
+              height: 50,
             ),
             Text(
               "Bem-Vindo de volta!",
