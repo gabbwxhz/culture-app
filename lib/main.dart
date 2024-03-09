@@ -4,6 +4,7 @@ import 'package:culture_app/utils/global.colors.dart';
 import 'package:flutter/material.dart';
 
 import 'view/login.dart';
+import 'view/signup.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -32,18 +33,18 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 150.0),
                 child: Image.asset(
                   'assets/images/logo.png',
-                  width: 400, // Define a largura da imagem
-                  height: 250, // Define a altura da imagem
+                  width: 400,
+                  height: 250,
                 )),
             SizedBox(
               height: 50,
             ),
             Text(
-              "Bem-Vindo de volta!",
+              "Bem-Vindo!",
               style: TextStyle(
-                  fontSize: 35,
+                  fontSize: 40,
                   color: GlobalColors.white,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.w900),
             ),
             SizedBox(
               height: 50,
@@ -64,7 +65,7 @@ class HomePage extends StatelessWidget {
                     'ENTRAR',
                     style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w900,
                         color: GlobalColors.white),
                   ),
                 ),
@@ -73,24 +74,29 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Container(
-              height: 53,
-              width: 300,
-              decoration: BoxDecoration(
-                  color: GlobalColors.white,
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(25)),
-              child: Center(
-                child: Text(
-                  'CADASTRAR',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: GlobalColors.black),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignupScreen()));
+              },
+              child: Container(
+                height: 53,
+                width: 300,
+                decoration: BoxDecoration(
+                    color: GlobalColors.white,
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(25)),
+                child: Center(
+                  child: Text(
+                    'CADASTRAR',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w900,
+                        color: GlobalColors.black),
+                  ),
                 ),
               ),
-            ),
-            Spacer()
+            )
           ],
         ),
       ),
