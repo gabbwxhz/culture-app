@@ -4,7 +4,7 @@ import 'package:culture_app/utils/global.colors.dart';
 import 'package:flutter/material.dart';
 
 import './forgot_password.dart';
-import './signup.dart';
+import 'signup/signup.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

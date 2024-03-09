@@ -4,7 +4,7 @@ import 'package:culture_app/utils/global.colors.dart';
 import 'package:flutter/material.dart';
 
 import 'view/login.dart';
-import 'view/signup.dart';
+import 'view/signup/signup.dart';
 
 void main() {
   runApp(MaterialApp(
