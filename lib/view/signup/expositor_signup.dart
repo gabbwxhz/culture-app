@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class ExpositorSignupScreen extends StatelessWidget {
@@ -5,6 +7,10 @@ class ExpositorSignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Text('expositor'),
+      ),
+    );
   }
 }
