@@ -1,7 +1,10 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers
 
 import 'package:culture_app/utils/global.colors.dart';
 import 'package:flutter/material.dart';
+
+import 'package:email_validator/email_validator.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 import './forgot_password.dart';
 import 'signup/signup.dart';
@@ -11,6 +14,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _keyForm = GlobalKey<FormState>();
+
     return Scaffold(
         body: Stack(
       children: [
@@ -59,71 +64,98 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-                    Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(color: GlobalColors.white),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        height: 60,
-                        child: TextField(
-                          keyboardType: TextInputType.emailAddress,
-                          style: TextStyle(
-                              color: GlobalColors.white, fontSize: 18),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 10),
-                            prefixIcon: Padding(
-                              padding:
-                                  EdgeInsets.only(left: 10, top: 1.5, right: 2),
-                              child: Icon(
-                                Icons.email,
-                                color: GlobalColors.mainColor,
-                                size: 25,
+                    Form(
+                      key: _keyForm,
+                      child: Column(
+                        children: <Widget>[
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(
+                                color: GlobalColors.white, fontSize: 18),
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(50)),
+                              contentPadding: EdgeInsets.only(
+                                top: 35,
+                              ),
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 10, top: 1.5, right: 2),
+                                child: Icon(
+                                  Icons.email_outlined,
+                                  color: GlobalColors.mainColor,
+                                  size: 25,
+                                ),
+                              ),
+                              hintText: 'Digite seu e-mail',
+                              hintStyle: TextStyle(
+                                color: GlobalColors.hintTextColor,
+                                fontSize: 18,
                               ),
                             ),
-                            hintText: 'Digite seu email',
-                            hintStyle: TextStyle(
-                                color: GlobalColors.hintTextColor,
-                                fontSize: 18),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "O campo é obrigatório";
+                              } else if (!EmailValidator.validate(value)) {
+                                return "Insira um e-mail válido";
+                              } else {
+                                return null;
+                              }
+                            },
                           ),
-                        )),
-                    SizedBox(
-                      height: 40,
+                          SizedBox(
+                            height: 40,
+                          ),
+                          TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              style: TextStyle(
+                                  color: GlobalColors.white, fontSize: 18),
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                    borderSide: BorderSide(
+                                        style: BorderStyle.solid, width: 59)),
+                                contentPadding: EdgeInsets.only(
+                                  top: 35,
+                                ),
+                                prefixIcon: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 10, top: 1.5, right: 2),
+                                  child: Icon(
+                                    Icons.key_outlined,
+                                    color: GlobalColors.mainColor,
+                                    size: 25,
+                                  ),
+                                ),
+                                hintText: 'Digite sua senha',
+                                hintStyle: TextStyle(
+                                  color: GlobalColors.hintTextColor,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(
+                                    errorText: "O campo é obrigatório"),
+                                FormBuilderValidators.minLength(8,
+                                    errorText:
+                                        "A senha deve ter pelo menos 8 caracteres."),
+                                FormBuilderValidators.match(
+                                    r'(?=.*?[#?!@$%^&*-])',
+                                    errorText:
+                                        "A senha deve incluir pelo menos um caractere especial."),
+                                FormBuilderValidators.match(r'(?=.*?[0-9])',
+                                    errorText:
+                                        "A senha deve incluir pelo menos um número."),
+                                FormBuilderValidators.match(r'(?=.*?[A-Z])',
+                                    errorText:
+                                        "A senha deve incluir pelo menos uma letra maiúscula."),
+                                FormBuilderValidators.match(r'(?=.*?[a-z])',
+                                    errorText:
+                                        "A senha deve incluir pelo menos uma letra minúscula."),
+                              ]))
+                        ],
+                      ),
                     ),
-                    Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                          border: Border.all(color: GlobalColors.white),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        height: 60,
-                        child: TextField(
-                          obscureText: true,
-                          obscuringCharacter: "*",
-                          keyboardType: TextInputType.visiblePassword,
-                          style: TextStyle(
-                              color: GlobalColors.white, fontSize: 18),
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 10),
-                            prefixIcon: Padding(
-                              padding:
-                                  EdgeInsets.only(left: 10, top: 1.5, right: 2),
-                              child: Icon(
-                                Icons.key,
-                                color: GlobalColors.mainColor,
-                                size: 25,
-                              ),
-                            ),
-                            hintText: 'Digite sua senha',
-                            hintStyle: TextStyle(
-                                color: GlobalColors.hintTextColor,
-                                fontSize: 18),
-                          ),
-                        )),
                     SizedBox(height: 15),
                     GestureDetector(
                         onTap: () {
@@ -150,10 +182,12 @@ class LoginScreen extends StatelessWidget {
                     Center(
                         child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupScreen()));
+                        if (_keyForm.currentState!.validate()) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignupScreen()));
+                        }
                       },
                       child: Container(
                         height: 53,
