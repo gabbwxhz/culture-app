@@ -2,16 +2,16 @@ name: culture_app
 description: "A new Flutter project."
 
 # Prevent accidental publishing to pub.dev.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
-
   email_validator: ^2.1.17
+  form_builder_validators: ^9.1.0
 
   flutter:
     sdk: flutter
@@ -26,6 +26,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Medium.ttf
 
   # Enable generation of localized Strings from arb files.
   generate: true
