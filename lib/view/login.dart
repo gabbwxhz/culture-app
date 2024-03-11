@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
           child: Align(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding: EdgeInsets.only(top: 55),
+                padding: EdgeInsets.only(top: 60),
                 child: Text(
                   'Bem-Vindo ao \n Projeto!',
                   textAlign: TextAlign.center,
@@ -73,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                               color: GlobalColors.white, fontSize: 18),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 9),
+                            contentPadding: EdgeInsets.only(top: 10),
                             prefixIcon: Padding(
                               padding:
                                   EdgeInsets.only(left: 10, top: 1.5, right: 2),
@@ -108,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                               color: GlobalColors.white, fontSize: 18),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 9),
+                            contentPadding: EdgeInsets.only(top: 10),
                             prefixIcon: Padding(
                               padding:
                                   EdgeInsets.only(left: 10, top: 1.5, right: 2),
@@ -140,12 +140,12 @@ class LoginScreen extends StatelessWidget {
                             style: TextStyle(
                               color: GlobalColors.hintTextColor,
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 17,
                             ),
                           ),
                         ])),
                     SizedBox(
-                      height: 30,
+                      height: 45,
                     ),
                     Center(
                         child: GestureDetector(
