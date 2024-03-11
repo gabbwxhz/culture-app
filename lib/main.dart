@@ -9,6 +9,7 @@ import 'view/signup/signup.dart';
 void main() {
   runApp(MaterialApp(
     home: HomePage(),
+    theme: ThemeData(fontFamily: 'Poppins-Medium'),
   ));
 }
 
