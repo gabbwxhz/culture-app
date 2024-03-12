@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
               child: Padding(
-                padding: EdgeInsets.only(left: 40, top: 100, right: 40),
+                padding: EdgeInsets.only(left: 40, top: 90, right: 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
