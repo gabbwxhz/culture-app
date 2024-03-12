@@ -192,10 +192,12 @@ class VisitorSignupScreen extends StatelessWidget {
                         Center(
                             child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => FeedScreen()));
+                            if (_keyForm.currentState!.validate()) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FeedScreen()));
+                            }
                           },
                           child: Container(
                             height: 53,
@@ -215,7 +217,7 @@ class VisitorSignupScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                        ))
+                        )),
                       ]))))
     ]));
   }
